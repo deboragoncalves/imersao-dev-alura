@@ -1,6 +1,6 @@
 let firstData = parseFloat(prompt("Digite com o primeiro valor: "));
 let secondData = parseFloat(prompt("Digite com o segundo valor: "));
-let operation = prompt("Digite a operação desejada: 1 para Soma, 2 para Subtração, 3 para Multiplicação e 4 para Divisão");
+let operation = prompt("Digite a operação desejada: \n\n1 - Soma; \n2 - Subtração; \n3 - Multiplicação; \n4 - Divisão");
 
 let result;
 
@@ -27,8 +27,8 @@ if (firstData != null && firstData != undefined && !(firstData.lenght == 0) && !
                 resultHTML.textContent = firstData + " / " + secondData + " = " + result;
                 break;
             default:
-                result = "Operação incorreta";
-                alert(result);
+                result = "Opção incorreta";
+                resultHTML.textContent = result;
                 break;
         }
 
