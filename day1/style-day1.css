@@ -1,0 +1,45 @@
+body {
+    font-family: Arial;
+    min-height: 400px;
+    background-color: #000000;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+  }
+  
+  .page-title {
+    color: #ffffff;
+    margin: 0 0 5px;
+  }
+  
+  .page-subtitle {
+    color: #ffffff;
+    margin-top: 5px;
+  }
+
+  .euro-value {
+    color: #ffffff;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .page-logo {
+    width: 200px;
+  }
+  
+  .alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right:10px;
+  }
+  
+  .dream-image {
+      max-width: 500px;
+      border-radius: 10%;
+      padding: 10px;
+      margin: 10px;
+  }
