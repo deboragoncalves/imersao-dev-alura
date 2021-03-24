@@ -1,6 +1,6 @@
 let firstData = parseFloat(prompt("Digite com o primeiro valor: "));
 let secondData = parseFloat(prompt("Digite com o segundo valor: "));
-let operation = prompt("Digite a operação desejada: \n\n1 - Soma; \n2 - Subtração; \n3 - Multiplicação; \n4 - Divisão");
+let operation = prompt("Digite a operação desejada: \n\n1 - Soma; \n2 - Subtração; \n3 - Multiplicação; \n4 - Divisão; \n5 - Potenciação;");
 
 let result;
 
@@ -12,19 +12,23 @@ if (firstData != null && firstData != undefined && !(firstData.lenght == 0) && !
         switch (operation) {
             case "1":
                 result = firstData + secondData;
-                resultHTML.textContent = firstData + " + " + secondData + " = " + result;
+                resultHTML.textContent = firstData + " + " + secondData + " = " + result.toFixed(2);
                 break;
             case "2":
                 result = firstData - secondData;
-                resultHTML.textContent = firstData + " - " + secondData + " = " + result;
+                resultHTML.textContent = firstData + " - " + secondData + " = " + result.toFixed(2);
                 break;
             case "3":
                 result = firstData * secondData;
-                resultHTML.textContent = firstData + " * " + secondData + " = " + result;
+                resultHTML.textContent = firstData + " * " + secondData + " = " + result.toFixed(2);
                 break;
             case "4":
                 result = firstData / secondData;
-                resultHTML.textContent = firstData + " / " + secondData + " = " + result;
+                resultHTML.textContent = firstData + " / " + secondData + " = " + result.toFixed(2);
+                break;
+            case "5":
+                result = Math.pow(firstData, secondData);
+                resultHTML.textContent = firstData + " ** " + secondData + " = " + result.toFixed(2);
                 break;
             default:
                 result = "Opção incorreta";
