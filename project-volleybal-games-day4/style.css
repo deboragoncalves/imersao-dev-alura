@@ -1,0 +1,71 @@
+body {
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  background-image: url("images/volleybal.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+  
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+}
+  
+.page-title {
+  color: #ffffff;
+  margin: 0 0 5px;
+}
+
+.title-project {
+  color: #ffffff;
+}
+  
+.page-subtitle {
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+.title-project {
+  background-color: #ffffff;
+  color: #000000;
+  margin: 0 auto;
+  padding: 10px;
+  margin: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0.8;
+}
+  
+.page-logo {
+  width: 200px;
+}
+  
+.alura-logo {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right:10px;
+}
+  
+body > img {
+  margin: 0 10px;
+}
+
+.list-games {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+}
+
+.list-games li {
+  list-style: none;
+  padding: 10px;
+  margin: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  opacity: 0.8;
+}
+  
