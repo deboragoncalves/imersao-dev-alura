@@ -1,4 +1,5 @@
 let games = new Array();
+let game;
 
 let trying = 5;
 
