@@ -3,10 +3,23 @@ function addGame() {
     let game = document.querySelector("#game");
     let linkGame = document.querySelector("#link-game");
 
-    if (game.value != null && game.value != undefined && !(game.value.lenght == 0) && linkGame.value != null && linkGame.value != undefined && !(linkGame.value.lenght == 0)) {
-     
-        showList(game.value, linkGame.value);
+    checkAllInputValues(game.value, linkGame.value);
 
+    game.value = "";
+    linkGame.value = "";
+
+}
+
+function checkAllInputValues(nameGame, linkGame) {
+    
+    if (nameGame != null && nameGame != undefined && nameGame != "" && linkGame != null && linkGame != undefined && linkGame != "") {
+    
+        if (linkGame.startsWith("https") || linkGame.startsWith("http")) {
+            showList(nameGame, linkGame);
+        } else {
+            alert("Informe o link correto.");
+        }
+       
     } else {
         alert("Informe o nome do jogo e o link.");
     }
@@ -18,13 +31,9 @@ function showList(nameGame, linkGame) {
     let itemList = document.createElement("li");
     let listGames = document.querySelector("#listGames");
 
-    // Link
-
     link.href = linkGame;
     link.target = "_blank";
     link.textContent = linkGame;
-
-    // Nome
 
     itemList.textContent = nameGame + "\n\n";
 
