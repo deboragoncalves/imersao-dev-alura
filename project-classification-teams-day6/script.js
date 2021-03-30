@@ -80,3 +80,4 @@ function addLosses(indexTeam) {
     showTeams(teams);
 }
 
+// TO DO: botão novo jogador, botão logo equipe em cada linha

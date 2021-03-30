@@ -41,5 +41,3 @@ function showList(nameGame, linkGame) {
 
     listGames.appendChild(itemList);
 }
-
-// TO DO: Embed/iframe
