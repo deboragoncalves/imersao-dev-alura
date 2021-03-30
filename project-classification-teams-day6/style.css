@@ -1,0 +1,62 @@
+* {
+    text-align: center;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 400px;
+    background-image: url('https://1.bp.blogspot.com/-2Bk-ZxnRsSY/YF-hDnceH6I/AAAAAAAALHA/dHe2igEQ2rQr2auLehpu57AEFe8kkX9ZQCLcBGAsYHQ/s2048/M%25C3%2581SCARA%2BTF%2B%252816%2529.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+}
+
+table {
+    width: 100%;
+}
+
+.page-title {
+    color: #000;
+    margin: 0 0 5px;
+}
+
+.page-subtitle {
+    color: #000;
+    margin-top: 5px;
+}
+
+.page-logo {
+    width: 200px;
+}
+
+.alura-logo {
+    width: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+table {
+    border: 2px solid white;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.7);
+    color: #000;
+}
+
+th, tr, td {
+    border: solid 1px white;
+    padding: 5px;
+}
+
+button {
+    border: 1px solid white;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
