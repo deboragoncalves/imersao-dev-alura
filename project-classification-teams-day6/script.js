@@ -61,14 +61,14 @@ function showTeams(teams) {
 
 function addWin(indexTeam) {
     let team = teams[indexTeam];
-    team.points += 3;
+    team.points = calcPoints(team);
     team.wins++;
     showTeams(teams);
 }
 
 function addTies(indexTeam) {
     let team = teams[indexTeam];
-    team.points += 1;
+    team.points = calcPoints(team);
     team.ties++;
     showTeams(teams);
 }
@@ -76,6 +76,7 @@ function addTies(indexTeam) {
 function addLosses(indexTeam) {
     let team = teams[indexTeam];
     team.losses++;
+    team.points = calcPoints(team);
     showTeams(teams);
 }
 
