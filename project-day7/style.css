@@ -10,10 +10,11 @@ body {
 .container {
     text-align: center;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .page-title {
-    color: #ffffff;
+    color: #0000;
     margin: 5px 0;
 }
 
@@ -26,7 +27,7 @@ button {
 }
 
 h2 {
-    color: white;
+    color: black;
 }
 
 #card-player {
@@ -65,5 +66,15 @@ h2 {
 }
 
 .options {
-    color: white;
+    color: black;
+}
+
+#buttonPlay {
+    font-weight: bold;
+    color: black;
+}
+
+.playersNames, .result {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
 }

@@ -50,23 +50,17 @@ function raffleCard() {
 
     let numCardMachine = parseInt(Math.random() * 3);
 
-    // Carta aleatória
-
     cardMachine = cards[numCardMachine];
 
     let numCardPlayer = parseInt(Math.random() * 3);
     
     while (numCardPlayer == numCardMachine) {
 
-        // Se for igual sorteia novamente
-
         numCardPlayer = parseInt(Math.random() * 3);
     }
 
     cardPlayer = cards[numCardPlayer];
     console.log(cardPlayer);
-
-    // Sorteou, jogar
 
     let buttonRaffle = document.getElementById("buttonRaffle");
     buttonRaffle.disabled = true;
@@ -105,19 +99,50 @@ function getBasicVolleybal() {
 }
 
 function play() {
-    let basicSelected = getBasicVolleybal();
-    
-    
-    // Comparar atributos máquina e player
 
+    let basicSelected = getBasicVolleybal();
+
+    let portugueseBasic = setLanguageBasic(basicSelected);
+
+    let showResult = document.querySelector(".result");
+
+    let playersNames = document.querySelector(".playersNames");
+
+    playersNames.textContent = "Jogadoras sorteadas: " + cardPlayer.name + " e " + cardMachine.name;
+    
     if (cardPlayer.volleyballBasics[basicSelected] > cardMachine.volleyballBasics[basicSelected]) {
 
-        console.log("venceu jogador")
+        showResult.textContent = "Venceu a jogadora " + cardPlayer.name + ", que fez " + cardPlayer.volleyballBasics[basicSelected] + " pontos em " + portugueseBasic;
 
     } else if (cardPlayer.volleyballBasics[basicSelected] < cardMachine.volleyballBasics[basicSelected]) {
 
-        console.log("venceu machine")
+        showResult.textContent = "Venceu a jogadora " + cardPlayer.name + ", que fez " + cardPlayer.volleyballBasics[basicSelected] + " pontos em " + portugueseBasic;
+
     } else {
-        console.log("none")
+
+        showResult.textContent = "Nenhuma jogadora venceu. Ambas empataram em " + cardPlayer.volleyballBasics[basicSelected] + " pontos em " + portugueseBasic;
     }
+
+}
+
+let setLanguageBasic = (basicSelected) => {
+
+    switch (basicSelected) {
+        case "defense":
+            portugueseBasic = "defesas";
+            return portugueseBasic;
+        case "atack":
+            portugueseBasic = "ataques";
+            return portugueseBasic;
+        case "block":
+            portugueseBasic = "bloqueios";
+            return portugueseBasic;
+        case "serve":
+            portugueseBasic = "saques";
+            return portugueseBasic;
+        default:
+            portugueseBasic = "";
+            return portugueseBasic;
+    }
+
 }
