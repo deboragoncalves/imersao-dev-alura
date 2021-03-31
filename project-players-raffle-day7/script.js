@@ -129,20 +129,15 @@ let setLanguageBasic = (basicSelected) => {
 
     switch (basicSelected) {
         case "defense":
-            portugueseBasic = "defesas";
-            return portugueseBasic;
+            return "defesas";
         case "atack":
-            portugueseBasic = "ataques";
-            return portugueseBasic;
+            return "ataques";
         case "block":
-            portugueseBasic = "bloqueios";
-            return portugueseBasic;
+            return "bloqueios";
         case "serve":
-            portugueseBasic = "saques";
-            return portugueseBasic;
+            return "saques";
         default:
-            portugueseBasic = "";
-            return portugueseBasic;
+            return "";
     }
 
 }
