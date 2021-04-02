@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Day 8 - Imersão Dev - Alura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-super-trunfo.png" class="page-logo"
@@ -15,26 +18,27 @@
         <button onclick="raffleCard()" id="buttonRaffle">Sortear jogadora</button>
         <form id="form">
             <h2>Escolha o seu atributo</h2>
-            <div class="options" id="options"></div>
-            <div class="playersNames"></div>
             <div class="wrapper">
-                <div>
-                    <div id="card-player">
-                        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
-                            style=" width: inherit; height: inherit; position: absolute;">
-                        <h3></h3>
-                    </div>
+                <div id="card-player" class="card">
+                    <div class="card-image-player"></div>
+                    <span class="card-title-player"></span>
+                    <div class="options-player"></div>
                 </div>
-                <div>
-                    <div id="card-machine" class="card"><img
-                            src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
-                            style=" width: inherit; height: inherit; position: absolute;"></div>
+            </div>
+            <div class="wrapper">
+                <div id="card-machine" class="card">
+                    <div class="card-image-machine"></div>
+                    <span class="card-title-machine"></span>
+                    <div class="options-machine"></div>
                 </div>
             </div>
             <button class="button-play" type="button" id="buttonPlay" onclick="play()" disabled="false">Jogar</button>
-            <div id="result" class="result"></div>
         </form>
+        <div id="results" class="results"></div>
     </div>
+
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>

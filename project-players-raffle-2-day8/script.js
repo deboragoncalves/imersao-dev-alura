@@ -47,7 +47,7 @@ cards.push(cardPaulo);
 let cardMachine;
 let cardPlayer;
 
-function raffleCard() {
+let raffleCard = () => {
 
     // 0 e 2
 
@@ -63,7 +63,6 @@ function raffleCard() {
     }
 
     cardPlayer = cards[numCardPlayer];
-    console.log(cardPlayer);
 
     let buttonRaffle = document.getElementById("buttonRaffle");
     buttonRaffle.disabled = true;
@@ -76,13 +75,18 @@ function raffleCard() {
 }
 
 let showPlayerCard = () => {
-    let cardPlayerHTML = document.getElementById("card-player");
-    let frame = "<img src='https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png' style='width: inherit; height: inherit; position: absolute;'>";
-    cardPlayerHTML.style.backgroundImage = `url(${cardPlayer.image})`;
 
-    let namePlayer = `<p class='card-subtitle'>${cardPlayer.name}</p>`;
+    let divCardPlayer = document.querySelector("#card-player");
 
-    let optionsInput = "";
+    let divCardImage = document.querySelector(".card-image-player");
+    let imagePlayer = document.createElement("img");
+    imagePlayer.src = cardPlayer.image;
+    divCardImage.append(imagePlayer);
+
+    let divCardTitle = document.querySelector(".card-title-player");
+    divCardTitle.textContent = cardPlayer.name;
+
+    let inputsBasicVolleybal = "";
 
     for (let basic in cardPlayer.volleyballBasics) {
 
@@ -90,17 +94,20 @@ let showPlayerCard = () => {
 
         // Retorna valor: nomeObjeto.nomeObjeto[nomeChave]
 
-        optionsInput += "<input type='radio' id='volleybalBasic' name='volleybalBasic' value=" + basic + ">" + basic + "\n\n";        
+        inputsBasicVolleybal += "<input type='radio' id='volleybalBasic' name='volleybalBasic' value='" + basic + "'>" + basic + " " + cardPlayer.volleyballBasics[basic] + "<br>";        
     }
     
-    let titlePlayerHTML = "<div id='options' class='card-status'></div>";
+    let divInputs = document.querySelector(".options-player");
+    divInputs.innerHTML = inputsBasicVolleybal;
+    console.log(divInputs)
 
-    let test = cardPlayerHTML.innerHTML = frame + namePlayer + titlePlayerHTML + optionsInput;
-    console.log(test)
+    divCardPlayer.append(divCardImage);
+    divCardPlayer.append(divCardTitle);
+    divCardPlayer.append(divInputs);
 
 }
 
-function getBasicVolleybal() {
+let getBasicVolleybal = () => {
     let basicVolleybal = document.getElementsByName("volleybalBasic");
 
     for (let k = 0; k < basicVolleybal.length; k++) {
@@ -110,46 +117,52 @@ function getBasicVolleybal() {
     }
 }
 
-function play() {
+let play = () => {
+
+    let divResults = document.getElementById("results");
+
+    let result = "<p class='final-result'>";
 
     let basicSelected = getBasicVolleybal();
-
-    let portugueseBasic = setLanguageBasic(basicSelected);
-
-    let showResult = document.querySelector(".result");
-
-    let playersNames = document.querySelector(".playersNames");
-
-    playersNames.textContent = "Jogadoras sorteadas: " + cardPlayer.name + " e " + cardMachine.name;
+    console.log(basicSelected)
     
     if (cardPlayer.volleyballBasics[basicSelected] > cardMachine.volleyballBasics[basicSelected]) {
-
-        showResult.textContent = "Venceu a jogadora " + cardPlayer.name + ", que fez " + cardPlayer.volleyballBasics[basicSelected] + " pontos em " + portugueseBasic;
-
+        result += cardPlayer.name + " venceu</p>";
     } else if (cardPlayer.volleyballBasics[basicSelected] < cardMachine.volleyballBasics[basicSelected]) {
-
-        showResult.textContent = "Venceu a jogadora " + cardPlayer.name + ", que fez " + cardPlayer.volleyballBasics[basicSelected] + " pontos em " + portugueseBasic;
-
+        result += cardPlayer.name + " perdeu</p>";
     } else {
-
-        showResult.textContent = "Nenhuma jogadora venceu. Ambas empataram em " + cardPlayer.volleyballBasics[basicSelected] + " pontos em " + portugueseBasic;
+        result += cardPlayer.name + " empatou</p>";
     }
+
+    divResults.innerHTML = result;
+    showMachineCard();
 
 }
 
-let setLanguageBasic = (basicSelected) => {
+let showMachineCard = () => {
 
-    switch (basicSelected) {
-        case "defense":
-            return "defesas";
-        case "atack":
-            return "ataques";
-        case "block":
-            return "bloqueios";
-        case "serve":
-            return "saques";
-        default:
-            return "";
+    let divCardMachine = document.querySelector("#card-machine");
+
+    let divCardImage = document.querySelector(".card-image-machine");
+    let imageMachine = document.createElement("img");
+    imageMachine.src = cardMachine.image;
+    divCardImage.appendChild(imageMachine);
+
+    let divCardTitle = document.querySelector(".card-title-machine");
+    divCardTitle.textContent = cardMachine.name;
+
+    let inputsBasicVolleybal = "";
+
+    for (let basic in cardMachine.volleyballBasics) {
+
+        inputsBasicVolleybal += "<p id='volleybalBasic'>" + basic + " " + cardMachine.volleyballBasics[basic] + "</p>";  
     }
+    
+    let divInputs = document.querySelector(".options-machine");
+    divInputs.innerHTML = inputsBasicVolleybal;
 
-}
+    divCardMachine.append(divCardImage);
+    divCardMachine.append(divCardTitle);
+    divCardMachine.append(divInputs);
+
+};
