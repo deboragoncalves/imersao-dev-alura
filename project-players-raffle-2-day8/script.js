@@ -94,7 +94,9 @@ let showPlayerCard = () => {
 
         // Retorna valor: nomeObjeto.nomeObjeto[nomeChave]
 
-        inputsBasicVolleybal += "<input type='radio' id='volleybalBasic' name='volleybalBasic' value='" + basic + "'>" + basic + " " + cardPlayer.volleyballBasics[basic] + "<br>";        
+        let portugueseBasic = setLanguageBasic(basic);
+
+        inputsBasicVolleybal += "<input type='radio' id='volleybalBasic' name='volleybalBasic' value='" + basic + "'>" + portugueseBasic + " " + cardPlayer.volleyballBasics[basic] + "<br>";        
     }
     
     let divInputs = document.querySelector(".options-player");
@@ -124,7 +126,6 @@ let play = () => {
     let result = "<p class='final-result'>";
 
     let basicSelected = getBasicVolleybal();
-    console.log(basicSelected)
     
     if (cardPlayer.volleyballBasics[basicSelected] > cardMachine.volleyballBasics[basicSelected]) {
         result += cardPlayer.name + " venceu</p>";
@@ -155,7 +156,9 @@ let showMachineCard = () => {
 
     for (let basic in cardMachine.volleyballBasics) {
 
-        inputsBasicVolleybal += "<p id='volleybalBasic'>" + basic + " " + cardMachine.volleyballBasics[basic] + "</p>";  
+        let portugueseBasic = setLanguageBasic(basic);
+
+        inputsBasicVolleybal += "<p id='volleybalBasic'>" + portugueseBasic + " " + cardMachine.volleyballBasics[basic] + "</p>";  
     }
     
     let divInputs = document.querySelector(".options-machine");
@@ -166,5 +169,22 @@ let showMachineCard = () => {
     divCardMachine.append(divInputs);
 
 };
+
+let setLanguageBasic = (basicSelected) => {
+
+    switch (basicSelected) {
+        case "defense":
+            return "defesas";
+        case "atack":
+            return "ataques";
+        case "block":
+            return "bloqueios";
+        case "serve":
+            return "saques";
+        default:
+            return "";
+    }
+
+} 
 
 // TO DO: corrigir inputs radio
