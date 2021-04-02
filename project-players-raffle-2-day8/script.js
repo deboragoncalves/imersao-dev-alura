@@ -166,3 +166,5 @@ let showMachineCard = () => {
     divCardMachine.append(divInputs);
 
 };
+
+// TO DO: corrigir inputs radio
