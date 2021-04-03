@@ -1,4 +1,4 @@
-// 0 a 100
+// Retirar carta sorteada após rodada
 
 let cardPaulo = {
     name: "Tandara",
@@ -37,32 +37,79 @@ let cardGodofredo = {
     }
 }
 
+let cardAna = {
+    name: "Carol Gattaz",
+    image: "https://www.melhordovolei.com.br/wp-content/uploads/2018/12/353034_853648_volei_fem_minas_x_sesc_rj_43.jpg",
+    position: "Central",
+    volleyballBasics: {
+        serve: 95,
+        defense: 80,
+        atack: 100,
+        block: 100
+    }
+}
+
+
+let cardClaudia = {
+    name: "Dani Lins",
+    image: "https://lh3.googleusercontent.com/proxy/bupy5BPAdIE7Fkgx8-ea8LCtuScEwajtZGH-rTRvlpwYV4Oi5OMroCtxmZrR30oyns7uSjXs-9sxpcaaCLolH2Ie0CVDk5Fk_-4ynZGGmSVI4ZDLIrtBog5aYzcfOC0g_QQNKSK-VR6PU0OuTYAlvmk88Iw7zkuqkKQ0LXP4A40h5pvFCBWny6ldjoydsdmgBexh4-LTfa4cClcNflcEkJbunifpjUeUrzz8KtqzX2yCBkbfTk84ZS2WKRwAaew",
+    position: "Levantadora",
+    volleyballBasics: {
+        serve: 95,
+        defense: 90,
+        ifting: 100,
+        block: 80
+    }
+}
+
 let cards = new Array();
 cards.push(cardGodofredo);
 cards.push(cardRafa);
 cards.push(cardPaulo);
-
-// Math.random: entre 0 e 1 
+cards.push(cardAna);
+cards.push(cardClaudia);
 
 let cardMachine;
 let cardPlayer;
 
+let pointsPlayer = 0;
+let pointsMachine = 0;
+
+let updateScore = () => {
+    let divScore = document.querySelector("#score");
+    let score = "Jogador: " + pointsPlayer + " x Máquina: " + pointsMachine; 
+
+    divScore.textContent = score;
+}
+
+updateScore();
+
+let updateAmountCards = () => {
+    let divAmountCards = document.querySelector("#amount-cards");
+    amountCards = "Quantidade de cartas no jogo: " + cards.length;
+
+    divAmountCards.textContent = amountCards;
+
+};
+
+updateAmountCards();
+
 let raffleCard = () => {
 
-    // 0 e 2
+    // Sorteio número carta máquina
 
-    let numCardMachine = parseInt(Math.random() * 3);
+    let numCardMachine = parseInt(Math.random() * cards.length);
 
     cardMachine = cards[numCardMachine];
 
-    let numCardPlayer = parseInt(Math.random() * 3);
-    
-    while (numCardPlayer == numCardMachine) {
-
-        numCardPlayer = parseInt(Math.random() * 3);
-    }
+    let numCardPlayer = parseInt(Math.random() * cards.length);
 
     cardPlayer = cards[numCardPlayer];
+
+    // Splice: retirar. Primeiro argumento, index do elemento; segundo, quantidade de elementos
+
+    cards.splice(numCardMachine, 1);
+    cards.splice(numCardPlayer, 1);
 
     let buttonRaffle = document.getElementById("buttonRaffle");
     buttonRaffle.disabled = true;
@@ -90,10 +137,6 @@ let showPlayerCard = () => {
 
     for (let basic in cardPlayer.volleyballBasics) {
 
-        // Radio button
-
-        // Retorna valor: nomeObjeto.nomeObjeto[nomeChave]
-
         let portugueseBasic = setLanguageBasic(basic);
 
         inputsBasicVolleybal += "<input type='radio' id='volleybalBasic' name='volleybalBasic' value='" + basic + "'>" + portugueseBasic + " " + cardPlayer.volleyballBasics[basic] + "<br>";        
@@ -101,7 +144,6 @@ let showPlayerCard = () => {
     
     let divInputs = document.querySelector(".options-player");
     divInputs.innerHTML = inputsBasicVolleybal;
-    console.log(divInputs)
 
     divCardPlayer.append(divCardImage);
     divCardPlayer.append(divCardTitle);
@@ -129,13 +171,53 @@ let play = () => {
     
     if (cardPlayer.volleyballBasics[basicSelected] > cardMachine.volleyballBasics[basicSelected]) {
         result += cardPlayer.name + " venceu</p>";
+
+        pointsPlayer++;
+
     } else if (cardPlayer.volleyballBasics[basicSelected] < cardMachine.volleyballBasics[basicSelected]) {
         result += cardPlayer.name + " perdeu</p>";
+
+        pointsMachine++;
+
     } else {
         result += cardPlayer.name + " empatou</p>";
     }
 
+    if (cards.length == 0) {
+        alert("Fim de jogo");
+
+        let finalResult = document.querySelector("#resultFinal");
+        finalResult.style.backgroundColor = "#ffffff";
+        finalResult.style.opacity = "0.8";
+        finalResult.style.margin = "0 auto";
+        finalResult.style.padding = "5px";
+
+        let textResult = "<p class='result-final'>";
+
+        if (pointsMachine > pointsPlayer) {
+            textResult = "Resultado: " + pointsPlayer + " pontos. Você perdeu.</p>";
+        } else if (pointsMachine == pointsPlayer) {
+            textResult = "Resultado: " + pointsPlayer + " pontos. Você empatou.</p>";
+        } else {
+            textResult = "Resultado: " + pointsPlayer + " pontos. + Você venceu.</p>";
+        }
+
+        finalResult.innerHTML = textResult;
+
+    } else {
+
+        let buttonNextRound = document.querySelector("#buttonNextRound");
+        buttonNextRound.disabled = false;
+
+    }
+
     divResults.innerHTML = result;
+
+    let buttonPlay = document.querySelector("#buttonPlay");
+    buttonPlay.disabled = true;
+
+    updateScore();
+    updateAmountCards();
     showMachineCard();
 
 }
@@ -181,8 +263,42 @@ let setLanguageBasic = (basicSelected) => {
             return "bloqueios";
         case "serve":
             return "saques";
+        case "ifting":
+            return "levantamentos";
         default:
             return "";
     }
 
 } 
+
+let nextRound = () => {
+
+    // Limpar cartas e resultado
+
+    let divCardPlayer = document.querySelector("#card-player");
+    let divCardMachine = document.querySelector("#card-machine");
+
+    let divImagePlayer = "<div class='card-image-player'></div>";
+    let spanTitlePlayer = "<span class='card-title-player'></span>";
+    let divOptionsPlayer = "<div class='options-player'></div>";
+
+    divCardPlayer.innerHTML = divImagePlayer + spanTitlePlayer + divOptionsPlayer;
+    
+    let divImageMachine = "<div class='card-image-machine'></div>";
+    let spanTitleMachine = "<span class='card-title-machine'></span>";
+    let divOptionsMachine = "<div class='options-machine'></div>";
+
+    divCardMachine.innerHTML = divImageMachine + spanTitleMachine + divOptionsMachine;
+
+    let buttonNextRound = document.querySelector("#buttonNextRound");
+    let buttonPlay = document.querySelector("#buttonPlay");
+    let buttonRaffle = document.querySelector("#buttonRaffle");
+
+    buttonPlay.disabled = true;
+    buttonNextRound.disabled = false;
+    buttonRaffle.disabled = false;
+
+    let result = document.querySelector("#results");
+    result.innerHTML = "";
+
+};

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 8 - Imersão Dev - Alura</title>
+    <title>Day 9 - Imersão Dev - Alura</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,14 +17,16 @@
         <button onclick="raffleCard()" id="buttonRaffle">Sortear jogadora</button>
         <form id="form">
             <h2>Escolha o seu atributo</h2>
-            <div class="wrapper">
+            <div id="score"></div>
+            <div id="amount-cards"></div>
+            <div class="wrapper-player">
                 <div id="card-player" class="card">
                     <div class="card-image-player"></div>
                     <span class="card-title-player"></span>
                     <div class="options-player"></div>
                 </div>
             </div>
-            <div class="wrapper">
+            <div class="wrapper-machine">
                 <div id="card-machine" class="card">
                     <div class="card-image-machine"></div>
                     <span class="card-title-machine"></span>
@@ -32,10 +34,12 @@
                 </div>
             </div>
             <button class="button-play" type="button" id="buttonPlay" onclick="play()" disabled="false">Jogar</button>
+            <div id="results"></div>
+            <div id="resultFinal"></div>
+            <button type="button" id="buttonNextRound" onclick="nextRound()" disabled="true">Próxima
+                rodada</button>
         </form>
-        <div id="results" class="results"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 

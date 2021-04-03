@@ -5,7 +5,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     padding-bottom: 20vh;
-    font-family: 25px;
+    font-family: 20px;
 }
 
 .container {
@@ -28,15 +28,16 @@ body {
 
 button, .button-play {
     padding: .8rem 1.5rem;
+    margin: 20px auto;
     border-radius: 5px;
     border: none;
     font-size: 1rem;
-    margin: 20px auto;
     padding: 10px;
 }
 
 h2 {
     color: white;
+    margin: 10px;
 }
 
 #card-player, #card-machine {
@@ -123,14 +124,22 @@ form {
     flex-direction: column;
 }
 
-.wrapper {
+.wrapper-player, .wrapper-machine {
     margin: 30px;
+}
+
+#score, #amount-cards, .result-final {
+    color: #000;
+    background-color: #ffffff;
+    opacity: 0.8;
+    padding: 10px;
+    margin: 10px auto;
 }
 
 #volleybalBasic {
     margin: 10px;
 }
 
-.results {
+#results {
     margin: 0 auto;
 }
